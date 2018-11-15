@@ -2,13 +2,14 @@ package com.gmbdesign.stratio.stratiowars.service.impl;
 
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateListDTO;
-import com.gmbdesign.stratio.stratiowars.presentation.dto.EncryptedCoordinateListDTO;
 import com.gmbdesign.stratio.stratiowars.service.IDecryptorService;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DecryptorService implements IDecryptorService {
@@ -16,13 +17,11 @@ public class DecryptorService implements IDecryptorService {
     private static final String SEPARATOR = "-";
 
     @Override
-    public DecryptedCoordinateListDTO decryptCoordinateList(EncryptedCoordinateListDTO encryptedCoordinateListDTO) {
+    public DecryptedCoordinateListDTO decryptCoordinates(String encryptedCoordinates) {
 
-        return new DecryptedCoordinateListDTO(encryptedCoordinateListDTO.getEncryptedCoordinateDTO()
-                .stream()
-                .map(encryptedCoordinateDTO -> encryptedCoordinateDTO.getEncryptedCoordinateUUID().split(SEPARATOR))
-                .collect(Collectors.toList())
-                .stream()
+        return new DecryptedCoordinateListDTO(Stream.of(encryptedCoordinates)
+                .flatMap(encryptedUUIDs -> Arrays.stream(encryptedUUIDs.split(";")))
+                .map(encryptedUUID -> encryptedUUID.split(SEPARATOR))
                 .map(coordinates ->
                         new DecryptedCoordinateDTO(new StringBuilder()
                                 .append(decryptGalaxy(coordinates[0]))
