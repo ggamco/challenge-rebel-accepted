@@ -1,10 +1,10 @@
-package com.gmbdesign.stratio.stratiowars.test.service;
+package com.gmbdesign.stratio.stratiowars.service;
 
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateListDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.EncryptedCoordinateDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.EncryptedCoordinateListDTO;
-import com.gmbdesign.stratio.stratiowars.test.service.impl.DecryptorService;
+import com.gmbdesign.stratio.stratiowars.service.impl.DecryptorService;
 import org.junit.Test;
 
 import java.util.ArrayList;

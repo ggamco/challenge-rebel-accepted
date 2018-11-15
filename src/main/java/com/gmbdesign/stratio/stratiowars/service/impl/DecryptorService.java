@@ -1,9 +1,9 @@
-package com.gmbdesign.stratio.stratiowars.test.service.impl;
+package com.gmbdesign.stratio.stratiowars.service.impl;
 
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateListDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.EncryptedCoordinateListDTO;
-import com.gmbdesign.stratio.stratiowars.test.service.IDecryptorService;
+import com.gmbdesign.stratio.stratiowars.service.IDecryptorService;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
