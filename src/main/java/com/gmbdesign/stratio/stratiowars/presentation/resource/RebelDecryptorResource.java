@@ -1,4 +1,4 @@
-package com.gmbdesign.stratio.stratiowars.presentation.rest;
+package com.gmbdesign.stratio.stratiowars.presentation.resource;
 
 import com.gmbdesign.stratio.stratiowars.presentation.dto.DecryptedCoordinateListDTO;
 import com.gmbdesign.stratio.stratiowars.presentation.dto.EncryptedCoordinateListDTO;
@@ -8,11 +8,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.xml.ws.Response;
 
 @RestController
 @RequestMapping(path = "/coordinates")
@@ -29,7 +29,7 @@ public class RebelDecryptorResource {
             @ApiResponse(code = 400, message = "Bad request. Be careful with imperial troopers."),
             @ApiResponse(code = 500, message = "May the Force be with you.")
     })
-    public DecryptedCoordinateListDTO getCoordinatesDecrypted (EncryptedCoordinateListDTO encryptedCoordinateListDTO) {
-        return decryptorService.decryptCoordinateList(encryptedCoordinateListDTO);
+    public ResponseEntity<DecryptedCoordinateListDTO> getCoordinatesDecrypted (@RequestBody EncryptedCoordinateListDTO encryptedCoordinateListDTO) {
+        return ResponseEntity.ok(decryptorService.decryptCoordinateList(encryptedCoordinateListDTO));
     }
 }
